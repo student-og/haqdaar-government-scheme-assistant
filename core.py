@@ -26,11 +26,26 @@ def parse(text, profile):
     else:
         m = re.search(r"(?:income|earn|rs\.?|₹)\s*[:=]?\s*(\d[\d,]{3,})", t) or re.search(r"\b(\d{5,7})\b", t)
         if m: p["income"] = int(m.group(1).replace(",", ""))
-    m = re.search(r"(\d{1,3})\s*(?:years|yrs|yr|y/o)", t) or re.search(r"\bage\s*[:=]?\s*(\d{1,3})", t)
-    if m: p["age"] = int(m.group(1))
-    elif "age" in profile or not m:
+    # Parse explicit age formats first.
+    m = (
+        re.search(r"\b(\d{1,3})\s*(?:years|yrs|yr|y/o)\b", t)
+        or re.search(r"\bage\s*[:=]?\s*(\d{1,3})\b", t)
+    )
+
+    if m:
+        p["age"] = int(m.group(1))
+    else:
+        # Accept a bare number only if the whole message is a number,
+        # or a number appears at the end after an ASI:One agent mention.
         mm = re.fullmatch(r"\s*(\d{1,3})\s*", t)
-        if mm and "age" not in p and "income" in p: p["age"] = int(mm.group(1))
+
+        if not mm:
+            mm = re.search(r"\s(\d{1,3})\s*$", t)
+
+        if mm and "income" in p:
+            number = int(mm.group(1))
+            if 0 <= number <= 120:
+                p["age"] = number
     if re.search(r"\b(female|woman|girl|she|mother)\b", t): p["gender"] = "female"
     if re.search(r"\b(male|man|boy)\b", t) and "female" not in t: p["gender"] = "male"
     for k in ("name",):
