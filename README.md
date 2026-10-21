@@ -99,10 +99,12 @@ to provide an agent-based interface for government-scheme assistance.
 - **ASI:One agent:**
   https://asi1.ai/ai/agent1qds2ex5rpm4pvhkjywe76zmw3pw7f5hkuadkd7mufyemq3p0ujqe5a5anl0
 
-- **Agentverse profile:** Add the public Agentverse profile URL here.
+- **Agentverse agent name :** haqdaar.
+- **Agentverse agent address :** agent1qds2ex5rpm4pvhkjywe76zmw3pw7f5hkuadkd7mufyemq3p0ujqe5a5anl0
+- **Agentverse agent profile link :**https://agentverse.ai/agents/details/agent1qds2ex5rpm4pvhkjywe76zmw3pw7f5hkuadkd7mufyemq3p0ujqe5a5anl0/profile
 
-- **ASI:One shared conversation:** Add a public shared-chat URL showing
-  a successful scheme-assistance workflow, if available.
+- **ASI:One shared conversation:** https://asi1.ai/chat/2223820f-d104-42f3-a5d5-68f91832a879
+- **ASI:One shared conversation invite :**https://asi1.ai/invite?channelInviteKey=MWFcS6uY7h1jzcj1s3Hm79dk2isdY9_FfDDFBSxPRos&utm_source=share&utm_medium=desktop&utm_campaign=channel_invite
 
 ### Architecture and verification status
 
